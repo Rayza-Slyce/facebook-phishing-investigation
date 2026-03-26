@@ -86,8 +86,8 @@ The following sequence was observed:
 3. `brucialseffset.com`  
 4. `bildnachricht.com`  
 
-![Redirect Chain - Part 1](03a_redirect_chain.png)  
-![Redirect Chain - Part 2](03b_redirect_chain.png)
+![Redirect Chain - Part 1](03_redirect_chain_1.png)  
+![Redirect Chain - Part 2](03_redirect_chain_2.png)
 
 ---
 
