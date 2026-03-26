@@ -225,7 +225,9 @@ This phishing campaign was reported to the relevant platforms and service provid
   - Report submitted for `bildnachricht.com`  
 
 - **Key-Systems (Registrar)**  
-  - Report submitted for `brucialseffset.com`  
+  - Report submitted for `brucialseffset.com`
+  - Result: - Confirmed they are the registrar only (no control over hosting/content)  
+  - Complaint forwarded to reseller (Commerce Media Tech sp. z o.o.)
 
 ### Outcome
 
