@@ -249,7 +249,7 @@ Following reporting and partial takedown of the phishing infrastructure, changes
 
 The domain `bildnachricht.com` is now flagged with a phishing warning:
 
-![Cloudflare Warning](07_cloudflare_warning.png)
+![Cloudflare Warning](07_cloudfare_warning.png)
 
 This indicates that the domain has been reported and classified as malicious.
 
