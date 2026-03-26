@@ -203,3 +203,112 @@ The attack flow is:
 - No actions were taken that could impact others  
 
 ---
+
+## Responsible Disclosure
+
+This phishing campaign was reported to the relevant platforms and service providers.
+
+### Reports Submitted
+
+- **Facebook**  
+  - The original post was reported via Facebook’s reporting system  
+  - Result: Post removed for violating Community Standards  
+
+- **Cloudflare**  
+  - Domains reported as phishing infrastructure  
+  - Result: Phishing warning page deployed on `bildnachricht.com`  
+
+- **Amazon Web Services (AWS)**  
+  - Report submitted regarding hosting infrastructure used in the redirect chain  
+
+- **Namecheap (Registrar)**  
+  - Report submitted for `bildnachricht.com`  
+
+- **Key-Systems (Registrar)**  
+  - Report submitted for `brucialseffset.com`  
+
+### Outcome
+
+- The original Facebook post was removed
+- At least one domain (`bildnachricht.com`) is now actively flagged as phishing
+- Hosting and domain providers acknowledged the reports and are investigating
+
+### Notes
+
+- No sensitive data was submitted during testing  
+- All analysis was conducted in a controlled lab environment (VM)  
+- No interaction was made with real user accounts or credentials  
+
+---
+
+## Post-Takedown Activity (Infrastructure Evolution)
+
+Following reporting and partial takedown of the phishing infrastructure, changes in behaviour were observed.
+
+### Cloudflare Intervention
+
+The domain `bildnachricht.com` is now flagged with a phishing warning:
+
+![Cloudflare Warning](07_cloudflare_warning.png)
+
+This indicates that the domain has been reported and classified as malicious.
+
+---
+
+### Infrastructure Adaptation
+
+Despite this, the campaign remains active and has adapted:
+
+- `bildnews33.com` → still active entry point  
+- `brucialseffset.com` → now returns HTTP 404 when accessed directly  
+- New domain introduced: `profilestalkers.com`  
+
+### Updated Redirect Chain
+
+1. `bildnews33.com`  
+2. `brucialseffset.com`  
+3. `profilestalkers.com` (new final destination)
+
+---
+
+### New Landing Page
+
+The phishing content has been moved to a new domain:
+
+![New Landing Page](08_new_landing_page.png)
+
+The page continues to use the same social engineering tactic:
+- Claims users can see who viewed their profile  
+- Encourages clicking through to reveal a “visitor list”  
+- Likely leads to credential harvesting  
+
+---
+
+### Observations
+
+- The threat actors are actively maintaining the campaign  
+- Infrastructure is rotated after detection or blocking  
+- Use of multiple domains suggests a scalable phishing setup  
+- 404 responses may indicate partial takedown or defensive evasion  
+
+---
+
+### Assessment
+
+This behaviour is consistent with:
+
+- Commodity phishing kits  
+- Affiliate-style traffic funnels  
+- Rapid domain rotation to evade detection  
+
+---
+
+### Next Steps
+
+Further investigation planned into:
+
+- `profilestalkers.com` hosting and ownership  
+- Additional domains linked to the campaign  
+- Potential reuse of infrastructure across other phishing campaigns  
+
+---
