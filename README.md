@@ -305,12 +305,107 @@ This behaviour is consistent with:
 
 ---
 
-### Next Steps
+## Post-Takedown Activity & Verification
 
-Further investigation planned into:
-
-- `profilestalkers.com` hosting and ownership  
-- Additional domains linked to the campaign  
-- Potential reuse of infrastructure across other phishing campaigns  
+After reporting the domains and Facebook post, I monitored the infrastructure to observe what happened next.
 
 ---
+
+### Facebook Response
+
+The original Facebook post was removed shortly after being reported, confirming it violated platform policies and helping stop further spread.
+
+---
+
+### Domain Status Changes
+
+#### `bildnews33.com`
+
+- WHOIS shows `clientHold` status  
+- DNS no longer resolves (`NXDOMAIN`)  
+- HTTP requests fail completely  
+
+---
+
+#### `bildnachricht.com`
+
+- WHOIS shows `clientHold` status  
+- DNS no longer resolves (`NXDOMAIN`)  
+- HTTP requests fail completely  
+
+---
+
+#### `profilestalkers.com`
+
+- DNS resolves to an IP address  
+- HTTP responds with a redirect (`308 → HTTPS`)  
+- HTTPS connection fails due to SSL errors  
+
+---
+
+### Post-Takedown Evidence
+
+The following screenshots show the state of the infrastructure after reporting:
+
+![bildnews33 Domain Unreachable](09_posttakedown_bildnews33.png)  
+![bildnachricht Domain Unreachable](11_posttakedown_bildnachricht.png)  
+![profilestalkers SSL Error](10_posttakedown_profilestalkers.png)
+
+---
+
+### Verification (Terminal Output)
+
+The following checks were performed from a Kali Linux environment:
+
+    whois bildnews33.com
+    dig bildnews33.com
+    curl -I http://bildnews33.com
+
+    # Result:
+    # - Domain status: clientHold
+    # - DNS: NXDOMAIN
+    # - HTTP: Could not resolve host
+
+    whois bildnachricht.com
+    dig bildnachricht.com
+    curl -I http://bildnachricht.com
+
+    # Result:
+    # - Domain status: clientHold
+    # - DNS: NXDOMAIN
+    # - HTTP: Could not resolve host
+
+    whois profilestalkers.com
+    dig profilestalkers.com
+    curl -I http://profilestalkers.com
+
+    # Result:
+    # - DNS resolves to 31.192.108.218
+    # - HTTP returns 308 redirect to HTTPS
+    # - HTTPS connection fails (SSL error)
+
+---
+
+### Observations
+
+Following reporting:
+
+- The original phishing post was removed  
+- Multiple domains in the redirect chain were suspended at registrar level  
+- Remaining infrastructure became partially broken or non-functional  
+- The attack flow no longer functions end-to-end  
+
+This shows how phishing infrastructure can quickly degrade once reported across multiple providers.
+
+---
+
+### Reflection
+
+This was a useful real-world exercise in:
+
+- Identifying a phishing pattern  
+- Tracing a redirect chain  
+- Reporting abuse to relevant providers  
+- Observing how infrastructure changes after intervention  
+
+While this was a relatively small case, it demonstrated how even a single report can contribute to disrupting a wider phishing campaign.
