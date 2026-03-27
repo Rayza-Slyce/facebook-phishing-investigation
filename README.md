@@ -245,7 +245,7 @@ This phishing campaign was reported to the relevant platforms and service provid
 
 ## Post-Takedown Analysis & Verification
 
-After reporting the campaign, I monitored the infrastructure to understand how it changed.
+After reporting the campaign, I monitored the infrastructure to see what happened next.
 
 ---
 
@@ -262,56 +262,69 @@ After reporting the campaign, I monitored the infrastructure to understand how i
 
 Shortly after, the attackers rotated infrastructure:
 
-- `bildnews33.com` → entry point (initially still active)  
-- `brucialseffset.com` → intermediary (returned 404 when accessed directly)  
-- New domain introduced: `profilestalkers.com`  
+- `bildnews33.com` remained in use as the entry point for a period  
+- `brucialseffset.com` continued to appear in the chain, although it returned 404 when accessed directly  
+- A new landing domain, `profilestalkers.com`, was introduced  
 
 ![New Landing Page](08_new_landing_page.png)
 
-This shows the campaign was still being actively maintained at that stage.
+This showed that the campaign was still being actively maintained at that stage.
 
 ---
 
-### Final Status (After Further Reporting)
+### Domain Status Changes after 24hrs
 
-All domains were rechecked:
+Follow-up checks were carried out approximately 24 hours after the initial investigation.
 
-#### `bildnews33.com`
-- `clientHold`  
-- DNS: `NXDOMAIN`  
-- No longer resolves  
 
-#### `bildnachricht.com`
-- `clientHold`  
-- DNS: `NXDOMAIN`  
-- No longer resolves  
+The following screenshots show the state of the infrastructure after reporting:
 
-#### `profilestalkers.com`
-- DNS resolves  
-- HTTP redirects to HTTPS  
-- HTTPS fails with an SSL error  
+![bildnews33 Domain Unreachable](09_posttakedown_bildnews33.png)  
+![profilestalkers SSL Error](10_posttakedown_profilestalkers.png)  
+![bildnachricht Domain Unreachable](11_posttakedown_bildnachricht.png)
 
 ---
 
 ### Verification (Terminal Output)
 
+The following checks were performed from a Kali Linux environment:
+
     whois bildnews33.com
     dig bildnews33.com
     curl -I http://bildnews33.com
 
-    # clientHold + NXDOMAIN -> fully taken down
+    # Result:
+    # - Domain status: clientHold
+    # - DNS: NXDOMAIN
+    # - HTTP: Could not resolve host
 
     whois bildnachricht.com
     dig bildnachricht.com
     curl -I http://bildnachricht.com
 
-    # clientHold + NXDOMAIN -> fully taken down
+    # Result:
+    # - Domain status: clientHold
+    # - DNS: NXDOMAIN
+    # - HTTP: Could not resolve host
 
     whois profilestalkers.com
     dig profilestalkers.com
     curl -I http://profilestalkers.com
 
-    # resolves but HTTPS fails -> partially broken
+    # Result:
+    # - DNS resolves to 31.192.108.218
+    # - HTTP returns 308 redirect to HTTPS
+    # - HTTPS connection fails (SSL error)
+
+---
+
+### What Happened After Reporting
+
+From the checks above, two of the domains, `bildnews33.com` and `bildnachricht.com`, have been fully taken down.
+
+Both now show `clientHold` in WHOIS, return `NXDOMAIN` in DNS, and no longer respond to HTTP requests. In practical terms, they have been removed from use.
+
+`profilestalkers.com` is different. The domain still exists and still responds, but it no longer functions properly as a phishing page because the HTTPS connection fails. So although it has not disappeared entirely, it is effectively broken.
 
 ---
 
@@ -319,18 +332,18 @@ All domains were rechecked:
 
 At this point:
 
-- The phishing post has been removed  
-- The main domains have been suspended  
-- The remaining infrastructure is non-functional  
+- The original Facebook post has been removed  
+- The main domains in the redirect chain have been taken down  
+- The replacement landing page is no longer working properly  
 
-The original attack chain no longer works.
+The full attack chain no longer works from start to finish.
 
 ---
 
 ### Final Thoughts
 
-One thing that stood out was how quickly the infrastructure changed once it was reported.
+One thing that stood out to me here was how quickly the infrastructure changed once the campaign was reported.
 
-The attackers attempted to adapt by rotating domains, but the setup did not remain stable once multiple providers were involved.
+The attackers did try to adapt by rotating domains, but the setup did not remain stable once multiple providers became involved.
 
-For me, this was a useful real-world example of how even a relatively small investigation can contribute to disrupting an active phishing campaign.
+For me, this was a useful real-world example of how even a relatively small investigation, followed by a few well-placed reports, can help disrupt an active phishing campaign.
