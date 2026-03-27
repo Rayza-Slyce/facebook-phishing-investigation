@@ -386,26 +386,48 @@ The following checks were performed from a Kali Linux environment:
 
 ---
 
-### Observations
+### What Happened After Reporting
 
-Following reporting:
+From the checks above, two of the domains (`bildnews33.com` and `bildnachricht.com`) have been fully taken down.
 
-- The original phishing post was removed  
-- Multiple domains in the redirect chain were suspended at registrar level  
-- Remaining infrastructure became partially broken or non-functional  
-- The attack flow no longer functions end-to-end  
+- Both now show `clientHold` in WHOIS  
+- DNS returns `NXDOMAIN`  
+- They no longer resolve or respond to requests  
 
-This shows how phishing infrastructure can quickly degrade once reported across multiple providers.
+This means they have effectively been removed from use.
 
 ---
 
-### Reflection
+`profilestalkers.com` is a bit different:
 
-This was a useful real-world exercise in:
+- The domain still resolves to an IP address  
+- It responds to HTTP requests  
+- But redirects to HTTPS, which fails due to an SSL error  
 
-- Identifying a phishing pattern  
-- Tracing a redirect chain  
-- Reporting abuse to relevant providers  
-- Observing how infrastructure changes after intervention  
+So while the domain still exists, it is no longer functioning properly as a phishing page.
 
-While this was a relatively small case, it demonstrated how even a single report can contribute to disrupting a wider phishing campaign.
+---
+
+### Overall Outcome
+
+At this point:
+
+- The original Facebook post has been removed  
+- The main redirect domains have been taken down  
+- The final landing page is no longer working  
+
+The full attack chain no longer works from start to finish.
+
+---
+
+### Summary
+
+What stood out to me here was how quickly things changed once the campaign was reported.
+
+The attackers were already rotating domains, but the infrastructure didn’t stay stable for long once multiple providers were involved.
+
+This was a good example of how even a small investigation and a few reports can have a real impact on disrupting something like this.
+
+
+
+
