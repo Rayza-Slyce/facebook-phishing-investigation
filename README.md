@@ -360,7 +360,7 @@ It was also useful to see how fast the attackers switched to a replacement landi
 
 From a personal workflow point of view, this helped me get more comfortable using Burp Suite inside an isolated VM to safely watch redirects and supporting requests without entering real credentials.
 
-If I were doing this again, I would try to capture the POST request path and parameters earlier in the process so I could better understand how the fake login page was handling submitted data.
+If I were doing this again, I would spend more time digging into the POST request and response flow after capturing it, so I could better understand exactly how the fake login page was handling submitted data and what the attacker backend may have been doing with it.
 
 ---
 
