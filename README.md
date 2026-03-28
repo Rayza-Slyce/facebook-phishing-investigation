@@ -4,7 +4,7 @@
 
 ## Executive Summary
 
-This investigation documents a live Facebook-based phishing campaign that used tagged social-engineering posts and a staged redirect chain to lead users to a fake Facebook login page.
+This investigation documents a live Facebook based phishing campaign that used tagged social engineering posts and a staged redirect chain to lead users to a fake Facebook login page.
 
 The analysis focused on safely tracing the redirect flow, identifying intermediary domains, reviewing network behaviour in an isolated VM, and collecting passive infrastructure evidence including hosting, DNS, and registrar details. The observed page structure and supporting requests strongly suggested a credential-harvesting objective, although no real credentials were submitted during testing.
 
