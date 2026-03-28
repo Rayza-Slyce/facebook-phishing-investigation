@@ -352,6 +352,18 @@ The full attack chain no longer works from start to finish.
 
 ---
 
+### Lessons Learned
+
+One of the biggest things this investigation taught me was how important it is to collect evidence as early as possible when dealing with live phishing pages, because things can change very quickly once reports start being actioned.
+
+It was also useful to see how fast the attackers switched to a replacement landing page when the original redirect chain started failing. That reminded me that follow-up checks are just as important as the initial investigation, because the first takedown is not always the true end of the campaign.
+
+From a personal workflow point of view, this helped me get more comfortable using Burp Suite inside an isolated VM to safely watch redirects and supporting requests without entering real credentials.
+
+If I were doing this again, I would try to capture the POST request path and parameters earlier in the process so I could better understand how the fake login page was handling submitted data.
+
+---
+
 ### Final Thoughts
 
 For me, this was a really useful real-world example of how quickly phishing infrastructure can be disrupted when clear evidence is collected and reported to the right providers.
