@@ -8,7 +8,7 @@ This investigation documents a live Facebook-based phishing campaign that used t
 
 The analysis focused on safely tracing the redirect flow, identifying intermediary domains, reviewing network behaviour in an isolated VM, and collecting passive infrastructure evidence including hosting, DNS, and registrar details. The observed page structure and supporting requests strongly suggested a credential-harvesting objective, although no real credentials were submitted during testing.
 
-The malicious content and related infrastructure were responsibly reported to the relevant providers, including Facebook, Cloudflare, AWS, and the domain registrars. Following disclosure, the original phishing page was disrupted, with later follow-up showing signs of attacker migration to replacement domains.
+The malicious content and related infrastructure were responsibly reported to the relevant providers, including Facebook, Cloudflare, AWS, and the domain registrars. Following disclosure, follow-up checks showed signs of attacker migration to a replacement domain, which was also later disrupted, resulting in the takedown of the wider scam funnel observed during the investigation.
 
 This write-up is intended as a methodology-focused case study in safe phishing analysis, evidence collection, and responsible disclosure.
 
