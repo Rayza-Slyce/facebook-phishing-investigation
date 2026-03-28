@@ -354,8 +354,8 @@ The full attack chain no longer works from start to finish.
 
 ### Final Thoughts
 
-One thing that stood out to me here was how quickly the infrastructure changed once the campaign was reported.
+For me, this was a really useful real-world example of how quickly phishing infrastructure can be disrupted when clear evidence is collected and reported to the right providers.
 
-The attackers did try to adapt by rotating domains, but the setup did not remain stable once multiple providers became involved.
+What stood out most was seeing that even a relatively small, careful investigation could contribute to breaking an active scam chain from start to finish.
 
-For me, this was a useful real-world example of how even a relatively small investigation, followed by a few well-placed reports, can help disrupt an active phishing campaign.
+It reinforced the value of safe hands-on investigation, good documentation, and responsible disclosure as practical ways to learn while still having a real positive impact.
