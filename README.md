@@ -1,3 +1,15 @@
+## Executive Summary
+
+This investigation documents a live Facebook-based phishing campaign that used tagged social-engineering posts and a staged redirect chain to lead users to a fake Facebook login page.
+
+The analysis focused on safely tracing the redirect flow, identifying intermediary domains, reviewing network behaviour in an isolated VM, and collecting passive infrastructure evidence including hosting, DNS, and registrar details. The observed page structure and supporting requests strongly suggested a credential-harvesting objective, although no real credentials were submitted during testing.
+
+The malicious content and related infrastructure were responsibly reported to the relevant providers, including Facebook, Cloudflare, AWS, and the domain registrars. Following disclosure, the original phishing page was disrupted, with later follow-up showing signs of attacker migration to replacement domains.
+
+This write-up is intended as a methodology-focused case study in safe phishing analysis, evidence collection, and responsible disclosure.
+
+---
+
 # Investigation: Facebook “Who’s Stalking Your Profile?” Scam
 
 ---
